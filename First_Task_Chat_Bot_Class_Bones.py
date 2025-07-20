@@ -14,7 +14,7 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, value):
-        if len(value) != 10:
+        if not (isinstance(value, str) and value.isdigit() and len(value) == 10):
             raise ValueError("Phone number must be a string of 10 digits.")
         super().__init__(value)
 
